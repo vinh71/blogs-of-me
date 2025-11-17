@@ -1,0 +1,18 @@
+title: Bùi Quang Vinh
+description: Behavioral Economist | Market Research | Social Analyst
+baseurl: ""
+url: "https://vinh71.github.io"
+
+markdown: kramdown
+permalink: /blog/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - Bùi Quang Vinh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f5f2eb;
+        }
+
+        .name-font {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        .navbar {
+            background: #fefdfb;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border-bottom: 1px solid #ebe8e1;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: -0.3px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #6c757d;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #c8a882;
+        }
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            padding: 0.4rem 0.8rem;
+            background: #f0ede6;
+            color: #6c757d;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border: 1px solid #ebe8e1;
+            font-weight: 500;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: #c8a882;
+            color: white;
+            border-color: #c8a882;
+        }
+
+        .blog-post {
+            max-width: 800px;
+            margin: 120px auto 80px;
+            padding: 0 20px;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-category {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .category-economics { background: #d4e8d4; color: #2d5a2d; }
+        .category-psychology { background: #e8d4e8; color: #6b4a6b; }
+        .category-society { background: #f0e7d6; color: #b8956b; }
+        .category-science-tech { background: #d4e4f0; color: #2d5a7a; }
+        .category-others { background: #e8e8e8; color: #5a5a5a; }
+
+        .blog-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .blog-meta {
+            color: #6c757d;
+            font-size: 1rem;
+        }
+
+        .blog-content {
+            background: #fefdfb;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid #ebe8e1;
+        }
+
+        /* Drop Cap - Chữ cái đầu to */
+        .blog-content > p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 0.8;
+            float: left;
+            margin: 0.1em 0.1em 0 0;
+            color: #2c3e50;
+        }
+
+        .blog-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #2c3e50;
+            margin: 2.5rem 0 1.5rem;
+            font-weight: 600;
+            border-bottom: 2px solid #f0ede6;
+            padding-bottom: 0.5rem;
+        }
+
+        .blog-content h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5rem;
+            color: #495057;
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin: 1.5rem 0 1.5rem 2rem;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .blog-content a {
+            color: #c8a882;
+            text-decoration: none;
+            border-bottom: 1px solid #c8a882;
+            transition: color 0.3s ease;
+        }
+
+        .blog-content a:hover {
+            color: #b69671;
+            border-bottom-color: #b69671;
+        }
+
+        .blog-content hr {
+            border: none;
+            border-top: 1px solid #ebe8e1;
+            margin: 2.5rem 0;
+        }
+
+        /* Footer với Share Buttons */
+        .blog-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ebe8e1;
+            text-align: center;
+        }
+
+        .share-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .share-btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .share-btn-facebook {
+            background: #1877f2;
+            color: white;
+        }
+
+        .share-btn-facebook:hover {
+            background: #0d65d9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
+        }
+
+        .share-btn-linkedin {
+            background: #0a66c2;
+            color: white;
+        }
+
+        .share-btn-linkedin:hover {
+            background: #004182;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(10, 102, 194, 0.4);
+        }
+
+        .blog-footer-note {
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .language-switcher {
+                gap: 0.3rem;
+            }
+
+            .lang-btn {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.75rem;
+            }
+
+            .blog-title {
+                font-size: 2rem;
+            }
+
+            .blog-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .blog-content > p:first-of-type::first-letter {
+                font-size: 3.5rem;
+            }
+
+            .blog-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .blog-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .share-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .share-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo name-font">Bùi Quang Vinh</a>
+            <ul class="nav-menu">
+                <li><a href="/index.html#home">Home</a></li>
+                <li><a href="/index.html#cv">Resume</a></li>
+                <li><a href="/index.html#blog" class="active">Blogs</a></li>
+                <li><a href="/index.html#contact">Contact</a></li>
+            </ul>
+            <div class="language-switcher">
+                <a href="#" class="lang-btn active" data-lang="vi">🇻🇳 VI</a>
+                <a href="#" class="lang-btn" data-lang="en">🇺🇸 EN</a>
+            </div>
+        </div>
+    </nav>
+
+    <article class="blog-post">
+        <header class="blog-header">
+            <span class="blog-category category-{{ page.category }}">
+                {% if page.category == 'economics' %}KINH TẾ HỌC
+                {% elsif page.category == 'psychology' %}TÂM LÝ HỌC
+                {% elsif page.category == 'society' %}XÃ HỘI
+                {% elsif page.category == 'science-tech' %}KHOA HỌC CÔNG NGHỆ
+                {% else %}KHÁC
+                {% endif %}
+            </span>
+            <h1 class="blog-title">{{ page.title }}</h1>
+            <div class="blog-meta">{{ page.date | date: "%d tháng %m, %Y" }}</div>
+        </header>
+
+        <div class="blog-content">
+            {{ content }}
+        </div>
+
+        <footer class="blog-footer">
+            <h3 class="share-title">Chia sẻ bài viết</h3>
+            
+            <div class="share-buttons">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" 
+                   target="_blank" 
+                   class="share-btn share-btn-facebook">
+                    Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url }}{{ page.url }}" 
+                   target="_blank" 
+                   class="share-btn share-btn-linkedin">
+                    LinkedIn
+                </a>
+            </div>
+
+            <p class="blog-footer-note">Chúc bạn ngày nắng yêu nắng, ngày mưa yêu mưa!</p>
+        </footer>
+    </article>
+</body>
+</html>
